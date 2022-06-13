@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('get-wallet', 'TransactionController@getWallet');
+Route::post('create-wallet', 'TransactionController@createWallet');
+Route::post('create-transaction', 'TransactionController@createTransaction');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
