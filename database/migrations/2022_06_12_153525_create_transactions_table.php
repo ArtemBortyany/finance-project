@@ -19,9 +19,11 @@ class CreateTransactionsTable extends Migration
             $table->enum('type', ['increment', 'decrement']);
             $table->float('amount');
             $table->string('comment')->nullable();
+            $table->unsignedBigInteger('category_id');
             $table->timestamps();
 
             $table->foreign('wallet_id')->references('id')->on('wallets')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

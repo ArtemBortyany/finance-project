@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Transaction;
 use App\Wallet;
 use Illuminate\Http\Request;
@@ -13,9 +14,6 @@ class TransactionController extends Controller
 
     }
 
-    /*
-     * 1. Создание кошелька createWallet() name = 'artem'
-     * 2. озданрие транзакции к кошельку createTransaction() type = ['decrement', 'increment'], wallet_id, amount, comment */
 
     public function getWallet(Request $request)
     {
@@ -23,7 +21,10 @@ class TransactionController extends Controller
 
         return response($wallets);
     }
-
+//Создать метод по примеру getWallet
+//создать роут на получение категорий
+//reloadWallets создать на подобе в хом блейд
+//сделать такое же поле с выбором категории (пример выбор кошелька)
     public function createWallet(Request $request)
     {
         $wallet = new Wallet();
@@ -43,16 +44,27 @@ class TransactionController extends Controller
             $wallet->balance  -= $request->amount;
         }
         $wallet->save();
-
         $transaction = new Transaction();
         $transaction->wallet_id = $wallet->id;
         $transaction->type = $request->type;
         $transaction->amount = $request->amount;
         $transaction->comment = $request->comment;
+        $transaction->category_id = $request->category_id;
         $transaction->save();
-        /*
-         * получение кошелька по юзеру и по имени  $wallet = Wallet::where('user_id', $request->user_id)->first()
-         * код по аналогии с createWallet только new Wallet() заменить на Transaction()
-         * вычитаь или добавлять баланс к $wallet*/
+
+    }
+    public function createCategory(Request $request)
+    {
+        $category = new Category();
+        $category->name = $request->name;
+        $category->save();
+
+        return response($category);
+    }
+    public function getCategory(Request $request)
+    {
+        $wallets = Category::get();
+
+        return response($wallets);
     }
 }
