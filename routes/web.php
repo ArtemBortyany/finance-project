@@ -11,6 +11,8 @@
 |
 */
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,3 +20,13 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/index', 'TransactionController@index');
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(
+    [
+        'prefix' => LocalizationService::locale(),
+        'middleware' => 'setLocale'
+    ],
+    function () {
+        Route::get('/home', 'HomeController@index');
+    }
+);

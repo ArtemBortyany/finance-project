@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-4">
-            Баланс
+            <p>@lang('main.balance_')</p>
             <ul class="balance">
 
             </ul>
@@ -12,7 +12,7 @@
             <form class="finance">
                 <div class="row">
                     <div class="col-2">
-                        Со счета
+                        @lang('main.From_the_account')
                     </div>
                     <div class="col-6">
                         <select class="form-control wallet-id">
@@ -29,8 +29,8 @@
                     </div>
                     <div class="col-4">
                         <select class="form-control type">
-                            <option value="decrement">Расход</option>
-                            <option value="increment">Доход</option>
+                            <option value="decrement">@lang('main.Consumption_')</option>
+                            <option value="increment">@lang('main.Income_')</option>
                         </select>
                     </div>
 
@@ -38,13 +38,13 @@
                 <div class="row">
                     <div class="col-8">
                         <label>
-                            Категория
+                            @lang('main.Category_')
                         </label>
                         <select type="text" class="form-control category-id">
                         </select>
                     </div>
                     <div class="col-3">
-                        <input type="button" value="Записать" class="btn btn-success" id="target">
+                        <input type="button" value="@lang('main.Add_')" class="btn btn-success" id="target">
                     </div>
                 </div>
             </form>
@@ -56,7 +56,7 @@
         <div class="col-8 offset-4">
             <form>
                 <input type="text" class="form-control name">
-                <input type="button"  value="Добавить" class="btn-success btn create-wallet">
+                <input type="button"  value="@lang('main.Add_')" class="btn-success btn create-wallet">
             </form>
         </div>
     </div>
@@ -64,7 +64,7 @@
         <div class="col-8 offset-4">
             <form>
                 <input type="text" class="form-control category-name">
-                <input type="button"  value="Добавить" class="btn-success btn create-category">
+                <input type="button"  value="@lang('main.Add_')" class="btn-success btn create-category">
             </form>
         </div>
     </div>
