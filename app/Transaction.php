@@ -10,6 +10,11 @@ class Transaction extends Model
 
     public function category()
     {
-        return $this->hasOne(Category::class);
+        return $this->hasOne(Category::class, 'id', 'category_id');
+    }
+
+    public function wallet()
+    {
+        return $this->hasOne(Wallet::class, 'id', 'wallet_id');
     }
 }

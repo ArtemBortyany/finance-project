@@ -18,6 +18,7 @@ Route::post('create-wallet', 'TransactionController@createWallet');
 Route::post('create-transaction', 'TransactionController@createTransaction');
 Route::post('create-category', 'TransactionController@createCategory');
 Route::get('get-category', 'TransactionController@getCategory');
+Route::get('get-data', 'TransactionController@allData')->name('transactions-data');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

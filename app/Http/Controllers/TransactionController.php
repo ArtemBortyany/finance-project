@@ -67,4 +67,7 @@ class TransactionController extends Controller
 
         return response($wallets);
     }
+    public function allData(){
+        return response(['transactions' => Transaction::with(['wallet', 'category'])->get()]);
+    }
 }

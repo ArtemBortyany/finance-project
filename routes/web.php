@@ -20,7 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/index', 'TransactionController@index');
 Route::get('/home', 'HomeController@index')->name('home');
-
 Route::group(
     [
         'prefix' => LocalizationService::locale(),
@@ -30,3 +29,5 @@ Route::group(
         Route::get('/home', 'HomeController@index');
     }
 );
+Route::get('/accounts', 'AccountsController@index');
+
