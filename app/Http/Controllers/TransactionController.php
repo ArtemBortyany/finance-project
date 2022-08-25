@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Transaction;
 use App\Wallet;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use const http\Client\Curl\AUTH_ANY;
 
 class TransactionController extends Controller
 {
@@ -14,17 +16,13 @@ class TransactionController extends Controller
 
     }
 
-
     public function getWallet(Request $request)
     {
         $wallets = Wallet::where('user_id', $request->user_id)->with('transaction')->get();
 
         return response($wallets);
     }
-//Создать метод по примеру getWallet
-//создать роут на получение категорий
-//reloadWallets создать на подобе в хом блейд
-//сделать такое же поле с выбором категории (пример выбор кошелька)
+
     public function createWallet(Request $request)
     {
         $wallet = new Wallet();
@@ -34,6 +32,8 @@ class TransactionController extends Controller
 
         return response($wallet);
     }
+
+
 
     public function createTransaction(Request $request)
     {
@@ -70,4 +70,35 @@ class TransactionController extends Controller
     public function allData(){
         return response(['transactions' => Transaction::with(['wallet', 'category'])->get()]);
     }
+    public function WalletSum(Request $request){
+
+        $wallet = Wallet::where('user_id', $request->user_id)->sum('balance');
+
+        return response(['sum'=>$wallet]);
+    }
+
+    public function getTransactions(Request $request){
+
+        if (!is_null($request->date_from)) {
+            $startDate = Carbon::parse($request->date_from)->toDateString();
+        }
+
+        if (!is_null($request->date_to)) {
+            $endDate = Carbon::parse($request->date_to)->toDateString();
+        }
+
+        $transactionsQuery = Transaction::with(['wallet', 'category']);
+
+        if (isset($startDate)) {
+            $transactionsQuery = $transactionsQuery->whereDate('created_at', '>=', $startDate);
+        }
+
+        if (isset($endDate)) {
+            $transactionsQuery = $transactionsQuery->whereDate('created_at', '<=', $endDate);
+        }
+
+        return response(['transactions' => $transactionsQuery->get()]);
+    }
+
+
 }

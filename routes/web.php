@@ -30,4 +30,4 @@ Route::group(
     }
 );
 Route::get('/accounts', 'AccountsController@index');
-
+Route::get('/records', 'RecordsController@index');

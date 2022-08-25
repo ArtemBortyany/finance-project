@@ -15,7 +15,10 @@
     <script src="/js/jquery.min.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
+{{--    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>--}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     <!-- Fonts -->
@@ -26,7 +29,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
 </head>
-<body>
+<body style="background-color: #DCDCDC">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -80,6 +83,70 @@
         </nav>
 
         <main class="py-4">
+            <div class="container">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="home">Панель управления</a>
+                    </li>
+                    <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                            Записи
+                        </a>
+
+                        <div class="dropdown-menu">
+                            <li><a class="dropdown-item" href="records">Записи</a></li>
+                            <li><a class="dropdown-item" href="#">Шаблоны</a></li>
+                            <li><a class="dropdown-item" href="#">Импорт</a></li>
+                            <li><a class="dropdown-item" href="#">Экспорт</a></li>
+                            <li><a class="dropdown-item" href="#">История</a></li>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                            Анализ
+                        </a>
+
+                        <div class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Графики</a></li>
+                            <li><a class="dropdown-item" href="#">Денежный поток</a></li>
+                            <li><a class="dropdown-item" href="#">Годовой баланс</a></li>
+                            <li><a class="dropdown-item" href="#">Годовой отчет</a></li>
+                        </div>
+                    </div>
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="accounts">Счета</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Бюджет</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="goals">Цели</a>
+                    </li>
+                    <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                            Другое
+                        </a>
+
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Категории</a>
+                            <a class="dropdown-item" href="#">Валюты</a>
+                            <a class="dropdown-item" href="#">Настройки</a>
+                        </div>
+                    </div>
+                </ul>
+
+                {{--    <div class="dropdown">--}}
+                {{--    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">--}}
+                {{--        Другое--}}
+                {{--    </a>--}}
+                {{--    <ul class="dropdown-menu">--}}
+                {{--        <li><a class="dropdown-item" href="#">Категории</a></li>--}}
+                {{--        <li><a class="dropdown-item" href="#">Валюты</a></li>--}}
+                {{--        <li><a class="dropdown-item" href="#">Настройки</a></li>--}}
+                {{--    </ul>--}}
+                {{--    </div>--}}
+            </div>
             @yield('content')
         </main>
     </div>

@@ -1,59 +1,15 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="home">Панель управления</a>
-        </li>
-        <div class="dropdown">
-        <a class="btn btn-secondary dropdown-toggle" href="#" id="1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Записи
-        </a>
-        <ul class="dropdown-menu" id="1">
-            <li><a class="dropdown-item" href="#">Записи</a></li>
-            <li><a class="dropdown-item" href="#">Шаблоны</a></li>
-            <li><a class="dropdown-item" href="#">Импорт</a></li>
-            <li><a class="dropdown-item" href="#">Экспорт</a></li>
-            <li><a class="dropdown-item" href="#">История</a></li>
-        </ul>
-        </div>
-        <div class="dropdown">
-        <a class="btn btn-secondary dropdown-toggle" href="#" id="2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Анализ
-        </a>
-        <ul class="dropdown-menu" id="2">
-            <li><a class="dropdown-item" href="#">Графики</a></li>
-            <li><a class="dropdown-item" href="#">Денежный поток</a></li>
-            <li><a class="dropdown-item" href="#">Годовой баланс</a></li>
-            <li><a class="dropdown-item" href="#">Годовой отчет</a></li>
-        </ul>
-        </div>
-        <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="accounts">Счета</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="budget">Бюджет</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="goals">Цели</a>
-        </li>
-    </ul>
-{{--    <div class="dropdown">--}}
-{{--    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">--}}
-{{--        Другое--}}
-{{--    </a>--}}
-{{--    <ul class="dropdown-menu">--}}
-{{--        <li><a class="dropdown-item" href="#">Категории</a></li>--}}
-{{--        <li><a class="dropdown-item" href="#">Валюты</a></li>--}}
-{{--        <li><a class="dropdown-item" href="#">Настройки</a></li>--}}
-{{--    </ul>--}}
-{{--    </div>--}}
-</div>
 
-<div class="container">
+
+<div class="container" style="background-color: white" >
     <div class="row">
         <div class="col-md-6" >
-            <p>@lang('main.balance_')</p>
+            <ul>@lang('main.balance_')
+                <li class="sum">
+
+                </li>
+            </ul>
             <ul class="balance">
 
             </ul>
@@ -82,7 +38,7 @@
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="tab-pane fade show active decrement-tab" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div class="row">
                         <div class="col-2">
                             @lang('main.From_the_account')
@@ -107,8 +63,8 @@
 
                             </select>
                         </div>
-                        <div class="col-2">
-                            <b>Дата</b>
+                        <div class="col-4">
+                            <p><? echo date('l \t\h\e jS')?></p>
                         </div>
                     </div>
                     <div class="row">
@@ -124,14 +80,12 @@
                             <b>Расписание</b>
                         </div>
                         <div class="col-2">
-                            <input type="button" value="Добавить" id="target" class="btn btn-success">
+                            <input type="button" value="Добавить" id="target" class="btn btn-success decrement target" data-type="decrement">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-4">
-                            <select class="form-control type">
-                                 <option value="decrement">@lang('main.Consumption_')</option>
-                             </select>
+
                          </div>
                     </div>
                 </div>
@@ -166,8 +120,8 @@
                         <div class="col-6">
                             <input type="text" class="form-control comment" id="" placeholder="Примечание">
                         </div>
-                        <div class="col-2">
-                            <b>Дата</b>
+                        <div class="col-4">
+                            <p><? echo date('l \t\h\e jS')?></p>
                         </div>
                     </div>
                     <div class="row">
@@ -183,15 +137,15 @@
                     </div>
                     <div class="row">
                          <div class="col-4">
-                            <select class="form-control type">
-                                 <option value="increment">@lang('main.Income_')</option>
+                            <select class="form-control ">
+                                 <option value="">@lang('main.Income_')</option>
                             </select>
                         </div>
                     </div>
                 </div>
 
 
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <div class="tab-pane fade increment-tab" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                     <div class="row">
                         <div class="col-2">
                             @lang('main.From_the_account')
@@ -216,8 +170,8 @@
 
                             </select>
                         </div>
-                        <div class="col-2">
-                            <b>Дата</b>
+                        <div class="col-4">
+                            <p><? echo date('l \t\h\e jS')?></p>
                         </div>
                     </div>
                     <div class="row">
@@ -233,14 +187,12 @@
                             <b>Расписание</b>
                         </div>
                         <div class="col-2">
-                            <input type="button" value="Добавить" id="target" class="btn btn-success">
+                            <input type="button" value="Добавить" id="target" class="btn btn-success increment target" data-type="increment">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-4">
-                            <select class="form-control type">
-                                 <option value="increment">@lang('main.Income_')</option>
-                             </select>
+
                          </div>
                     </div>
                 </div>
@@ -248,7 +200,7 @@
         </div>
     </div>
 </div>
-<div class="container">
+<div class="container" style="background-color: white">
     <div class="row">
         <div class="col-md-6">
 
@@ -263,14 +215,14 @@
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="homes" role="tabpanel" aria-labelledby="homes-tab">
+                <div class="tab-pane fade show active one-transactions" id="homes" role="tabpanel" aria-labelledby="homes-tab">
                     1
                 </div>
                 <div class="tab-pane fade all-transactions" id="profiles" role="tabpanel" aria-labelledby="profiles-tab" >
                     <table class="table">
                         <thead>
                         <tr>
-                            <th scope="col">id</th>
+                            <th scope="col">data</th>
                             <th scope="col">wallet</th>
                             <th scope="col">category</th>
                             <th scope="col">sum</th>
@@ -284,6 +236,7 @@
         </div>
     </div>
 </div>
+
 
 
 {{--<div class="container">--}}
@@ -357,21 +310,32 @@
 {{--</div>--}}
 <script type="text/javascript">
     // get-wallet
+    var type = 'decrement';
+
+    $('.decrement').click(function () {
+        type = 'decrement';
+    });
+    $('.increment').click(function () {
+        type = 'increment';
+    });
     var user_id = {{\Illuminate\Support\Facades\Auth::id()}}
     $(document).ready ( function () {
         reloadWallets();
         reloadCategories();
         getResentData();
-        $("#target").click(function () {
+        getResentSum();
+        $(".target").click(function () {
+            var type = $(this).data('type');
             $.ajax('/api/create-transaction', {
                 type: 'POST',  // http method
                 data: {
-                    wallet_id: $('.wallet-id').val(),
-                    type: $('.type').val(),
-                    amount: $('.amount').val(),
-                    comment: $('.comment').val(),
-                    category_id: $('.category-id').val(),
+                    wallet_id: $('.' + type +'-tab .wallet-id').val(),
+                    type: type,
+                    amount: $('.' + type +'-tab .amount').val(),
+                    comment: $('.' + type +'-tab .comment').val(),
+                    category_id: $('.' + type +'-tab .category-id').val(),
                 },
+
                 success: function (data) {
                     reloadWallets();
                 },
@@ -451,7 +415,7 @@
         $.ajax('/api/get-data', {
             type: 'GET',  // http method
             success: function (data) {
-               var transactions = data.transactions;
+                var transactions = data.transactions;
                 for (var i =0; i < transactions.length; i++) {
                     var tr = $('<tr>');
                     var td_date = $('<td>').html(transactions[i].created_at);
@@ -462,11 +426,11 @@
                     tr.append(td_wallet);
                     tr.append(td_category);
                     tr.append(td_sum);
-                    // if (transactions[i].amount == increment) {
-                    //     tr.css('color', 'green');
-                    // } else {
-                    //     tr.css('color', 'red');
-                    // }
+                    if (transactions[i].type === 'increment') {
+                        tr.css('color', 'green');
+                    } else {
+                        tr.css('color', 'red');
+                    }
                     $('.all-transactions table tbody').append(tr);
                     // var li = $('<li>').html(transactions[i].created_at + " " + transactions[i].wallet.name + " " + transactions[i].category.name);
                     // $('.all-transactions ul').append(li);
@@ -477,7 +441,26 @@
             }
         });
     }
-    all-data
+    function getResentSum() {
+        $.ajax('/api/sum-data?user_id=1', {
+            type: 'GET',  // http method
+            success: function (data) {
+                $('.sum').html(data.sum);
+                if (data.sum > 0){
+                    $('.sum').css('color', 'green')
+                }
+                else {
+                    $('.sum').css('color', 'red');
+                }
+            },
+            error: function (jqXhr, textStatus, errorMessage) {
+                console.log(errorMessage);
+            }
+        });
+    }
+
+    // all-data
 </script>
+
 @endsection
 
