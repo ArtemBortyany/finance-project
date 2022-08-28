@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Requests\Transaction\UpdateRequest;
 use App\Transaction;
 use App\Wallet;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use const http\Client\Curl\AUTH_ANY;
 
 class TransactionController extends Controller
 {
@@ -33,8 +33,6 @@ class TransactionController extends Controller
         return response($wallet);
     }
 
-
-
     public function createTransaction(Request $request)
     {
         $wallet = Wallet::where('id', $request->wallet_id)->first();
@@ -51,8 +49,8 @@ class TransactionController extends Controller
         $transaction->comment = $request->comment;
         $transaction->category_id = $request->category_id;
         $transaction->save();
-
     }
+
     public function createCategory(Request $request)
     {
         $category = new Category();
@@ -100,5 +98,13 @@ class TransactionController extends Controller
         return response(['transactions' => $transactionsQuery->get()]);
     }
 
+    public function updateTransaction(Transaction $transaction, UpdateRequest $request)
+    {
+        $transaction->update($request->validated());
+    }
 
+    public function deleteTransaction(Transaction $transaction)
+    {
+        $transaction->delete();
+    }
 }

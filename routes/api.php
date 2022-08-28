@@ -21,7 +21,8 @@ Route::get('get-category', 'TransactionController@getCategory');
 Route::get('get-data', 'TransactionController@allData')->name('transactions-data');
 Route::get('sum-data', 'TransactionController@WalletSum');
 Route::get('transaction-by-date', 'TransactionController@getTransactions');
-
+Route::post('update-transaction/{transaction}', 'TransactionController@updateTransaction');
+Route::post('delete-transaction/{transaction}', 'TransactionController@deleteTransaction');
 
 
 

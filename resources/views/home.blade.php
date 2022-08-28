@@ -25,8 +25,8 @@
             </form>
         </div>
 
-        <div class="col-md-6" >
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <div class="col-md-6 " >
+            <ul class="nav nav-tabs border border-warning" id="myTab" role="tablist" style="background-color: orange">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="home-tab" data-toggle="tab" data-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Расход</button>
                 </li>
@@ -59,12 +59,12 @@
                             </label>
                         </div>
                         <div class="col-4">
-                            <select type="text" class="form-control category-id">
+                            <select type="text" class="form-control category-id" style="margin-bottom: 10px;">
 
                             </select>
                         </div>
                         <div class="col-4">
-                            <p><? echo date('l \t\h\e jS')?></p>
+                            <? echo date('l \t\h\e jS')?>
                         </div>
                     </div>
                     <div class="row">
@@ -111,7 +111,7 @@
                             </label>
                         </div>
                         <div class="col-4">
-                            <select class="form-control wallet-id">
+                            <select class="form-control wallet-id" style="margin-bottom: 10px;">
 
                             </select>
                         </div>
@@ -135,13 +135,7 @@
                             <input type="button" value="Добавить" id="target" class="btn btn-success">
                         </div>
                     </div>
-                    <div class="row">
-                         <div class="col-4">
-                            <select class="form-control ">
-                                 <option value="">@lang('main.Income_')</option>
-                            </select>
-                        </div>
-                    </div>
+
                 </div>
 
 
@@ -166,7 +160,7 @@
                             </label>
                         </div>
                         <div class="col-4">
-                            <select type="text" class="form-control category-id">
+                            <select type="text" class="form-control category-id" style="margin-bottom: 10px;">
 
                             </select>
                         </div>
@@ -237,77 +231,6 @@
     </div>
 </div>
 
-
-
-{{--<div class="container">--}}
-{{--    <div class="row">--}}
-{{--        <div class="col-4">--}}
-{{--            <p>@lang('main.balance_')</p>--}}
-{{--            <ul class="balance">--}}
-
-{{--            </ul>--}}
-{{--        </div>--}}
-{{--        <div class="col-8">--}}
-{{--            <form class="finance">--}}
-{{--                <div class="row">--}}
-{{--                    <div class="col-2">--}}
-{{--                        @lang('main.From_the_account')--}}
-{{--                    </div>--}}
-{{--                    <div class="col-6">--}}
-{{--                        <select class="form-control wallet-id">--}}
-
-{{--                        </select>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-2">--}}
-{{--                        <input type="number" class="form-control amount" id="amount" name="amount">--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="row">--}}
-{{--                    <div class="col-8">--}}
-{{--                        <input type="text" class="form-control comment" id="">--}}
-{{--                    </div>--}}
-{{--                    <div class="col-4">--}}
-{{--                        <select class="form-control type">--}}
-{{--                            <option value="decrement">@lang('main.Consumption_')</option>--}}
-{{--                            <option value="increment">@lang('main.Income_')</option>--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
-
-{{--                </div>--}}
-{{--                <div class="row">--}}
-{{--                    <div class="col-8">--}}
-{{--                        <label>--}}
-{{--                            @lang('main.Category_')--}}
-{{--                        </label>--}}
-{{--                        <select type="text" class="form-control category-id">--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-3">--}}
-{{--                        <input type="button" value="@lang('main.Add_')" class="btn btn-success" id="target">--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </form>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--    <br/>--}}
-{{--    <br/>--}}
-{{--    <div class="row">--}}
-{{--        <div class="col-8 offset-4">--}}
-{{--            <form>--}}
-{{--                <input type="text" class="form-control name">--}}
-{{--                <input type="button"  value="@lang('main.Add_')" class="btn-success btn create-wallet">--}}
-{{--            </form>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--    <div class="row">--}}
-{{--        <div class="col-8 offset-4">--}}
-{{--            <form>--}}
-{{--                <input type="text" class="form-control category-name">--}}
-{{--                <input type="button"  value="@lang('main.Add_')" class="btn-success btn create-category">--}}
-{{--            </form>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</div>--}}
 <script type="text/javascript">
     // get-wallet
     var type = 'decrement';
@@ -397,6 +320,7 @@
             }
         });
     }
+
     function reloadCategories() {
         $.ajax('/api/get-category', {
             type: 'GET',  // http method
@@ -411,6 +335,7 @@
             }
         });
     }
+
     function getResentData() {
         $.ajax('/api/get-data', {
             type: 'GET',  // http method

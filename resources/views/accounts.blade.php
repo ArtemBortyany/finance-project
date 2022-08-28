@@ -44,7 +44,9 @@
 
 
 
+
 <script type="text/javascript">
+
     var user_id = {{\Illuminate\Support\Facades\Auth::id()}}
     $(document).ready ( function () {
         reloadWallets();
